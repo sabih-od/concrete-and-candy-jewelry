@@ -12,7 +12,9 @@
                             <div class="page-title-box">
                                 <h4 class="page-title">Dashboard</h4>
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item active">Welcome To Free-99 Admin Dashboard</li>
+                                    <li class="breadcrumb-item active">Welcome To Concrete & Candy Jewelry Admin
+                                        Dashboard
+                                    </li>
                                 </ol>
                             </div>
                         </div>
@@ -36,7 +38,7 @@
                                 <div class="row align-items-center p-1">
                                     <div class="col-lg-10">
                                         <h5 class="font-16">Total Order Amount</h5>
-{{--                                        <h4 class="text-info pt-1 mb-0">${{$reports['total_orders_amount']}}</h4>--}}
+                                        {{--                                        <h4 class="text-info pt-1 mb-0">${{$reports['total_orders_amount']}}</h4>--}}
                                     </div>
                                     {{--                                    <div class="col-lg-6">--}}
                                     {{--                                        <div id="chart1"></div>--}}
@@ -52,7 +54,7 @@
                                 <div class="row align-items-center p-1">
                                     <div class="col-lg-10">
                                         <h5 class="font-16 w-100">My Total Commission</h5>
-{{--                                        <h4 class="text-warning pt-1 mb-0">${{$reports['total_invoice_commision']}}</h4>--}}
+                                        {{--                                        <h4 class="text-warning pt-1 mb-0">${{$reports['total_invoice_commision']}}</h4>--}}
                                     </div>
                                     {{--                                    <div class="col-lg-6">--}}
                                     {{--                                        <div id="chart2"></div>--}}
@@ -68,7 +70,7 @@
                                 <div class="row align-items-center p-1">
                                     <div class="col-lg-10">
                                         <h5 class="font-16">Pending Invoices of Vendors</h5>
-{{--                                        <h4 class="text-primary pt-1 mb-0">${{$reports['pending_invoice_amount']}}</h4>--}}
+                                        {{--                                        <h4 class="text-primary pt-1 mb-0">${{$reports['pending_invoice_amount']}}</h4>--}}
                                     </div>
                                     {{--                                    <div class="col-lg-6">--}}
                                     {{--                                        <div id="chart3"></div>--}}
@@ -84,7 +86,7 @@
                                 <div class="row align-items-center p-1">
                                     <div class="col-lg-10">
                                         <h5 class="font-16">Total Unpaid Invoices</h5>
-{{--                                        <h4 class="text-danger pt-1 mb-0">{{$reports['unpaid_invoice_count']}}</h4>--}}
+                                        {{--                                        <h4 class="text-danger pt-1 mb-0">{{$reports['unpaid_invoice_count']}}</h4>--}}
                                     </div>
                                     {{--                                    <div class="col-lg-6">--}}
                                     {{--                                        <div id="chart4"></div>--}}

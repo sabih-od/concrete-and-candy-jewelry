@@ -22,6 +22,12 @@
 <body>
 
 <div class="preLoader black">
-    <img src="{{ asset('images/logo.png') }}" alt="img">
+    @if(!empty($settings->header_logo))
+        <img src="{{ asset('setting_images/' . $settings->header_logo) ?? '' }}" class="img-fluid"
+             alt="img">
+    @else
+        <img src="{{ $settings->settingImage('header_logo') ?? ''  }}" class="img-fluid" alt="">
+
+    @endif
 </div>
 <div class="preLoader white"></div>

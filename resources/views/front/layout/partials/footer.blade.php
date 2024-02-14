@@ -1,29 +1,34 @@
 <section class="instaSec">
+
     <div class="container">
         <div class="freshHeading">
-            <h2 class="mainHeading text-center mb-4">On Instagaram</h2>
+            <h2 class="mainHeading text-center mb-4">{{ $footer->content['footer_heading'] ?? '' }}</h2>
         </div>
         <div class="row">
             <div class="swiper instaSlider">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="instaWrap">
-                            <img src="{{ asset('images/insta1.jpg') }}" class="img-fluid" alt="">
+                            <img src="{{ $footer->cmsImages('social_media_pic1') ?? ''  }}" class="img-fluid"
+                                 alt="">
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="instaWrap">
-                            <img src="{{ asset('images/insta2.jpg') }}" class="img-fluid" alt="">
+                            <img src="{{ $footer->cmsImages('social_media_pic2') ?? ''  }}" class="img-fluid"
+                                 alt="">
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="instaWrap">
-                            <img src="{{ asset('images/insta3.jpg') }}" class="img-fluid" alt="">
+                            <img src="{{ $footer->cmsImages('social_media_pic3') ?? ''  }}" class="img-fluid"
+                                 alt="">
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="instaWrap">
-                            <img src="{{ asset('images/insta4.jpg') }}" class="img-fluid" alt="">
+                            <img src="{{ $footer->cmsImages('social_media_pic4') ?? ''  }}" class="img-fluid"
+                                 alt="">
                         </div>
                     </div>
                 </div>
@@ -40,21 +45,27 @@
         <div class="row align-items-center signBg">
             <div class="col-md-6">
                 <div class="signHead">
-                    <h2>Sign up for updates and offerings</h2>
-                    <p>What' s inside? Exclusive sales, new arrivals & much more.</p>
+                    <h2>{{ $footer->content['footer_sub_heading'] ?? '' }}</h2>
+                    <p>{{ $footer->content['footer_description'] ?? '' }}</p>
                 </div>
             </div>
             <div class="col-md-6">
                 <form class="searchForm">
                     <input type="text" placeholder="Email here...">
-                    <button class="themeBtn">Subscribe</button>
+                    <button class="themeBtn">{{ $footer->content['footer_button'] ?? '' }}</button>
                 </form>
             </div>
         </div>
         <div class="row justify-content-between">
             <div class="col-md-3 my-auto">
                 <a href="" class="footLogo">
-                    <img src="{{ asset('images/footerlogo.png') }}" class="img-fluid" alt="">
+                    @if(!empty($settings->footer_logo))
+                        <img src="{{ asset('setting_images/' . $settings->footer_logo) ?? '' }}" class="img-fluid"
+                             alt="img">
+                    @else
+                        <img src="{{ $settings->settingImage('footer_logo') ?? ''  }}" class="img-fluid" alt="">
+
+                    @endif
                 </a>
                 <ul class="topSocial">
                     <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -85,10 +96,9 @@
             <div class="col-md-3">
                 <h4>CONTACT INFO</h4>
                 <ul class="links quickLinks">
-                    <li><a href="#">Phone: 123 456 7890</a></li>
-                    <li><a href="etching-work">Email: info@youremail.com</a></li>
-                    <li><a href="clothing.php">Working hours Mon-Fri 10-18h CET <br>
-                            50 NE. Surrey St.Ossining, NY 10562 USA</a></li>
+                    <li><a href="#">Phone: {{ $settings->phone_no ?? '' }}</a></li>
+                    <li><a href="etching-work">Email: {{ $settings->email ?? '' }}</a></li>
+                    <li><a href="clothing.php">{{ $settings->address ?? '' }}</a></li>
                 </ul>
             </div>
         </div>

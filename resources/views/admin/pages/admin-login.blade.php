@@ -39,8 +39,13 @@
                     <div class="card-body">
                         <div class="text-center mt-0 mb-3">
                             <a href="index.html" class="logo logo-admin">
-                                <img src="{{ asset('images/logo.png') }}" class="mt-3" alt=""
-                                     height="26"></a>
+                                @if(!empty($settings->header_logo))
+                                    <img src="{{ asset('setting_images/' . $settings->header_logo) ?? '' }}" class="img-fluid"
+                                         alt="img">
+                                @else
+                                    <img src="{{ $settings->settingImage('header_logo') ?? ''  }}" class="img-fluid" alt="">
+
+                                @endif
                             <p class="text-muted w-75 mx-auto mb-4 mt-4">Enter your email address and password to access
                                 admin panel. </p>
                         </div>

@@ -74,8 +74,13 @@
             <a href="#" class="logo">
                 {{--                <img src="{{ asset('admin-assets/images/logo-light.png') }}" class="logo-lg" alt="" height="22">--}}
                 {{--                <img src="{{ asset('admin-assets/images/logo-sm.png') }}" class="logo-sm" alt="" height="24">--}}
-                <img src="{{ asset('images/logo.png') }}" alt="" height="24">
+                @if(!empty($settings->header_logo))
+                    <img src="{{ asset('setting_images/' . $settings->header_logo) ?? '' }}" class="img-fluid"
+                         alt="img">
+                @else
+                    <img src="{{ $settings->settingImage('header_logo') ?? ''  }}" class="img-fluid" alt="">
 
+                @endif
             </a>
         </div>
 

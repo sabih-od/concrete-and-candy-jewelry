@@ -40,10 +40,18 @@
                                             <input type="file" name="header_logo" id="header_logo" class="form-control"
                                                    onchange="previewImage(this, 'header_logo_preview')"
                                                    accept="image/*">
-                                            @foreach($setting->getMedia('header_logo') as $media)
-                                                <img src="{{ $media->getUrl() }}" alt="Existing Banner Image"
-                                                     style="max-width: 200px; max-height: 200px; margin-top: 10px;">
-                                            @endforeach
+                                            @if(!empty($settings->header_logo))
+                                                <img src="{{ asset('setting_images/' . $settings->header_logo) ?? '' }}"
+                                                     class="img-fluid"
+                                                     alt="img">
+                                            @else
+                                                @foreach($setting->getMedia('header_logo') as $media)
+                                                    <img src="{{ $media->getUrl() }}" alt="Existing Banner Image"
+                                                         style="max-width: 200px; max-height: 200px; margin-top: 10px;">
+                                                @endforeach
+                                            @endif
+
+
                                         </div>
 
                                         <div class="form-group col-md-4">
@@ -51,20 +59,34 @@
                                             <input type="file" name="footer_logo" id="footer_logo" class="form-control"
                                                    onchange="previewImage(this, 'footer_logo_preview')"
                                                    accept="image/*">
-                                            @foreach($setting->getMedia('footer_logo') as $media)
-                                                <img src="{{ $media->getUrl() }}" alt="Existing Banner Image"
-                                                     style="max-width: 200px; max-height: 200px; margin-top: 10px;">
-                                            @endforeach
+
+                                            @if(!empty($settings->footer_logo))
+                                                <img src="{{ asset('setting_images/' . $settings->footer_logo) ?? '' }}"
+                                                     class="img-fluid"
+                                                     alt="img">
+                                            @else
+                                                @foreach($setting->getMedia('footer_logo') as $media)
+                                                    <img src="{{ $media->getUrl() }}" alt="Existing Banner Image"
+                                                         style="max-width: 200px; max-height: 200px; margin-top: 10px;">
+                                                @endforeach
+                                            @endif
                                         </div>
 
                                         <div class="form-group col-md-4">
                                             <label for="fav_image">Favicon Image</label>
                                             <input type="file" name="fav_image" id="fav_image" class="form-control"
                                                    onchange="previewImage(this, 'fav_image_preview')" accept="image/*">
-                                            @foreach($setting->getMedia('fav_icon') as $media)
-                                                <img src="{{ $media->getUrl() }}" alt="Existing Banner Image"
-                                                     style="max-width: 200px; max-height: 200px; margin-top: 10px;">
-                                            @endforeach
+
+                                            @if(!empty($settings->fav_icon))
+                                                <img src="{{ asset('setting_images/' . $settings->fav_icon) ?? '' }}"
+                                                     class="img-fluid"
+                                                     alt="img">
+                                            @else
+                                                @foreach($setting->getMedia('fav_icon') as $media)
+                                                    <img src="{{ $media->getUrl() }}" alt="Existing Banner Image"
+                                                         style="max-width: 200px; max-height: 200px; margin-top: 10px;">
+                                                @endforeach
+                                            @endif
                                         </div>
 
                                         <!-- Add more fields for phone_no, address, email, social links as needed -->
@@ -111,7 +133,7 @@
                                                    class="form-control" value="{{ $setting->social_link_4 }}">
                                         </div>
 
-{{--                                        <div class="form-group col-md-4">--}}
+                                        {{--                                        <div class="form-group col-md-4">--}}
                                         {{--                                            <label for="pay_out_days">Pay out days</label>--}}
                                         {{--                                            <input type="text" name="pay_out_days" id="pay_out_days"--}}
                                         {{--                                                   class="form-control" value="{{ $setting->pay_out_days }}">--}}
