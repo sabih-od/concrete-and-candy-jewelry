@@ -26,4 +26,9 @@ class Setting extends Model implements HasMedia
 //        'product_return_days'
     ];
 
+    public function settingImage($collection_name)
+    {
+        return $this->getMedia($collection_name)->first() ? $this->getMedia($collection_name)->first()->getUrl() : asset('images/No-Image.png');
+    }
+
 }
