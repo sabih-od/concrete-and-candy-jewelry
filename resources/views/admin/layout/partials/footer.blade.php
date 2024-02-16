@@ -5,6 +5,9 @@
 <script src="{{ asset('admin-assets/js/waves.min.js')}}"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/1.11.6/js/jquery.dataTables.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js"
         integrity="sha512-BkpSL20WETFylMrcirBahHfSnY++H2O1W+UnEEO4yNIl+jI2+zowyoGJpbtk6bx97fBXf++WJHSSK2MV4ghPcg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>

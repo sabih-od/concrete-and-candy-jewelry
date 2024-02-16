@@ -192,7 +192,7 @@
         <!-- content -->
 
         <footer class="footer">
-            © 2023 Free-99 <span class="d-none d-sm-inline-block"> - Copyright reserved. </span>.
+            © 2023 Candy-jewelry <span class="d-none d-sm-inline-block"> - Copyright reserved. </span>.
         </footer>
 
     </div>

@@ -23,5 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(FooterSeeder::class);
         $this->call(SettingSeeder::class);
         $this->call(ShopPageSeeder::class);
+        $this->call(RegionSeeder::class);
+        $this->call(ProductSizesSeeder::class);
     }
 }

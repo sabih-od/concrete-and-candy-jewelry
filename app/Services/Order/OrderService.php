@@ -100,13 +100,13 @@ class OrderService
         ];
     }
 
-    public function createOrder($user, $charge, $cartData, $commision, $data)
+    public function createOrder($user, $charge, $cartData, $data)
     {
         $order = $this->orderModel->create($this->getOrderData($user, $charge, $data));
 
         foreach ($cartData as $cart) {
             $orderDetail = $this->orderDetailModel->create($this->getOrderDetailData($order, $cart));
-            $this->vendorWalletModel->create($this->getWalletData($orderDetail->id, $cart, $commision, $user));
+//            $this->vendorWalletModel->create($this->getWalletData($orderDetail->id, $cart, $user));
 
             $vendorProduct = $this->productModel->where('id', $cart->options->product->id)->with('user')->first();
             $vendorProduct->minusProductStock($cart->qty);
@@ -275,7 +275,7 @@ class OrderService
     public function getOrder($order, $type)
     {
         if ($type == "my_orders" || $type == "admin") {
-            return $this->orderModel->where('id', $order->id)->with('user', 'details.product.returnPolicy')->first();
+            return $this->orderModel->where('id', $order->id)->with('user', 'details.product')->first();
         } else {
             return $this->orderModel->where('id', $order->id)->with(['details' => function ($query) {
                 $query->whereHas('product', function ($q) {

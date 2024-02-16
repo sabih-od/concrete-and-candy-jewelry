@@ -2,6 +2,17 @@
 
 @section('content')
 
+    <div class="preLoader black">
+        @if(!empty($settings->header_logo))
+            <img src="{{ asset('setting_images/' . $settings->header_logo) ?? '' }}" class="img-fluid"
+                 alt="img">
+        @else
+            <img src="{{ $settings->settingImage('header_logo') ?? ''  }}" class="img-fluid" alt="">
+
+        @endif
+    </div>
+    <div class="preLoader white"></div>
+
     <section class="main-slider p-0" id="mainSlider"
              style="background-image: url('{{ $data['homeData']->cmsImages('background_banner_image') ?? '' }}')">
         <div class="swiper-container homeSlider">

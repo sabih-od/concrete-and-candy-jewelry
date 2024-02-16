@@ -25,26 +25,6 @@
                                                    value="{{ $category->name }}">
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="parent_id">Parent Category</label>
-                                            <select class="form-control" id="parent_id" name="parent_id">
-                                                <option value="0">Select Parent Category</option>
-                                                @foreach($categories as $parentCategory)
-                                                    @if ($parentCategory->parent_id == 0)
-                                                        <option style="font-weight: bold;" value="{{ $parentCategory->id }}" {{ $category->parent_id == $parentCategory->id ? 'selected' : '' }}>
-                                                            {{ $parentCategory->name }}
-                                                        </option>
-                                                        @if ($parentCategory->subcategories->count() > 0)
-                                                            @include('admin.components.edit-category-dropdown', [
-                                                                'subcategories' => $parentCategory->subcategories,
-                                                                 'maincategories' => $category,
-                                                                'level' => 1 // Start with level 1 for the top-level categories
-                                                            ])
-                                                        @endif
-                                                    @endif
-                                                @endforeach
-                                            </select>
-                                        </div>
                                     </div>
 
                                     <div class="col-md-4">

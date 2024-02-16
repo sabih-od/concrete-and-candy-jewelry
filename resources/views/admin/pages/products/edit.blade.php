@@ -33,7 +33,6 @@
                     </div>
                 </div>
                 <!-- end page-title -->
-
                 <form method="POST" id="edit-product-form" action="{{route('admin.prod.update',$product->id)}}"
                       enctype="multipart/form-data">
                     @csrf
@@ -57,52 +56,16 @@
                                         <select name="category_id" id="parent_id" class="form-control">
                                             <option disabled>Select Category</option>
                                             @foreach ($categories as $category)
-                                                @if ($category->parent_id == 0)
-                                                    <option style="font-weight: bold;"
-                                                            value="{{ $category->id }}"
-                                                            @if ($category->id == $product->category_id)
-                                                            selected
-                                                        @endif>
-                                                        {{ $category->name }}
-                                                    </option>
-                                                    @if ($category->subcategories->count() > 0)
-                                                        @include('admin.components.category-dropdown', [
-                                                            'subcategories' => $category->subcategories,
-                                                            'level' => 1,
-                                                            'parentCategoryID' => $category->id,
-                                                            'selectedCategoryID' => $product->category_id // Pass the selected category ID
-                                                        ])
-                                                    @endif
-                                                @endif
+                                                <option style="font-weight: bold;"
+                                                        value="{{ $category->id }}"
+                                                        @if ($category->id == $product->category_id)
+                                                        selected
+                                                    @endif>
+                                                    {{ $category->name }}
+                                                </option>
                                             @endforeach
                                         </select>
                                         @error('category_id')
-                                        <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                    <div class="">
-                                        <ul class="list">
-                                            <li>
-                                                <input class="checkclick1" name="product_brand_check"
-                                                       type="checkbox" id="product_condition_check" value="1"
-                                                       @if($product->brand != null) checked @endif>
-                                                <label
-                                                    for="product_condition_check">{{ __('Product Brand') }}</label>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="form-group @if($product->brand == null) show-box @endif ">
-                                        <div class="col-lg-12">
-                                            <div class="left-area">
-                                                <p class="m-0">{{ __('Product Brand') }}</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <input type="text" class="form-control"
-                                                   name="brand" value="{{$product->brand}}">
-                                        </div>
-                                        @error('brand')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -300,20 +263,42 @@
                                             </div>
 
                                         @endforelse
-
                                     </div>
 
                                     <div class="">
                                         <ul class="list">
                                             <li>
-                                                <input name="featured"
-                                                       type="checkbox" id="product_condition_check"
-                                                       @if($product->featured == 1) checked @endif value="1">
+                                                <input class="checkclick1" name="product_feature_check"
+                                                       type="checkbox" id="product_condition_check" value="1"
+                                                       @if(isset($product->features) && !is_null($product->features)) checked @endif>
                                                 <label
-                                                    for="product_condition_check">{{ __('Featured') }}</label>
+                                                    for="product_condition_check">{{ __('Manage Features') }}</label>
                                             </li>
                                         </ul>
                                     </div>
+                                    <div
+                                        class="form-group @if( $product->features == null) show-box @endif">
+                                        <div class="col-lg-12">
+                                            <div class="featuresBtn">
+                                                <label>
+                                                    <input type="checkbox" name="feature[]" value="waterproof"
+                                                           @if(isset($product->features) && in_array('waterproof', json_decode($product->features))) checked @endif>
+                                                    <span>Waterproof</span>
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" name="feature[]" value="hypoallergenic"
+                                                           @if(isset($product->features) && in_array('hypoallergenic', json_decode($product->features))) checked @endif>
+                                                    <span>Hypoallergenic</span>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        @error('feature')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+
                                     {{--                                    <div class="">--}}
                                     {{--                                        <ul class="list">--}}
                                     {{--                                            <li>--}}

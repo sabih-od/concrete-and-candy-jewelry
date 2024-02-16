@@ -22,7 +22,6 @@
                                    style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                 <tr>
-                                    <th>Parent Category</th>
                                     <th>Name</th>
                                     <th>Slug</th>
                                     <th>Created at</th>
@@ -51,11 +50,10 @@
         var moduleName = '{{ request()->segment(2) }}';  //for main.js
 
         var columnsConfig = [
-            { data: 'parent_category', name: 'parent_category' },
-            { data: 'name', name: 'name' },
-            { data: 'slug', name: 'slug' },
-            { data: 'created_at', name: 'created_at' },
-            { data: 'action', searchable: false, orderable: false }
+            {data: 'name', name: 'name'},
+            {data: 'slug', name: 'slug'},
+            {data: 'created_at', name: 'created_at'},
+            {data: 'action', searchable: false, orderable: false}
         ];
 
     </script>

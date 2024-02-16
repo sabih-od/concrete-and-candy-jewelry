@@ -1,5 +1,4 @@
 <!-- Begin: Header -->
-
 <header>
     <div class="topBar">
         <p>
@@ -36,10 +35,12 @@
                     <li class="nav-item drop-down">
                         <a class="nav-link" href="">jewelry</a>
                         <ul>
-                            <li><a href="earrings.php">Earrings</a></li>
-                            <li><a href="shop.php">Rings</a></li>
-                            <li><a href="necklace.php">Necklace</a></li>
-                            <li><a href="bracelet.php">Bracelets</a></li>
+                            @forelse($categories as $cat)
+                                <li>
+                                    <a href="{{ route('front.shop' , ['category' => $cat->slug]) }}">{{ $cat->name }}</a>
+                                </li>
+                            @empty
+                            @endforelse
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -51,9 +52,11 @@
                 </ul>
                 <div class="form-inline">
                     <a href="#search"><i class="fal fa-search"></i></a>
-                    <a href="#"><i class="fal fa-user"></i></a>
+                    <a href="{{ auth()->check() ? route('user.dashboard') : route('login.form') }}"><i
+                            class="fal fa-user"></i></a>
                     <a href="#"><i class="fal fa-heart"></i></a>
-                    <a href="#" class="cart"><i class="fal fa-shopping-cart"></i><span>$0.00</span></a>
+                    <a href="{{ route('front.cart') }}" class="cart"><i
+                            class="fal fa-shopping-cart"></i><span><b>${{Cart::subtotal()}}</b></span></a>
                 </div>
             </div>
         </nav>

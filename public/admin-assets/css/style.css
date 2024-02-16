@@ -4186,3 +4186,34 @@ div#landscape button#crop-image {
     font-size: 12px;
     color: darkgrey;
 }
+
+
+.featuresBtn label {
+    position: relative;
+}
+
+.featuresBtn label input:checked + span {
+    background: #242d3e;
+    color: #fff;
+}
+
+.featuresBtn label input {
+    clip: rect(0 0 0 0);
+    -webkit-clip-path: inset(100%);
+    clip-path: inset(100%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+
+.featuresBtn label span {
+    display: block;
+    width: fit-content;
+    padding: 0.75em 2.25em;
+    background: transparent;
+    border: 1px solid #242d3e;
+    color: #000;
+}

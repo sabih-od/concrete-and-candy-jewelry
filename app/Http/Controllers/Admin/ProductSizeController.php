@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Helpers\WebResponses;
+use App\Models\ProductSize;
 use App\Models\Size;
 use App\Services\Admin\ProductSizeService;
 use Illuminate\Http\Request;
@@ -44,25 +45,25 @@ class ProductSizeController extends AdminBaseController
     }
 
 
-    public function show(Size $size)
+    public function show(ProductSize $size)
     {
         return view('admin.pages.sizes.edit', compact('size'));
     }
 
 
-    public function update(Request $request, Size $size)
+    public function update(Request $request, ProductSize $size)
     {
         $size = $this->productSizeService->updateSize($size, $request->all());
         if ($size) {
-            return WebResponses::successRedirect('admin.sizes.index', 'Subscription Updated successfully');
+            return WebResponses::successRedirect('admin.sizes.index', 'Product Size Updated successfully');
         }
         return WebResponses::errorRedirectBack('Size not found');
     }
 
 
-    public function destroy(Size $productSize)
+    public function destroy(ProductSize $productSize)
     {
-//        $this->subscriptionService->deleteSubscription($subscription);
-//        return $this->successRedirect('admin.sizes.index', 'Subscription Deleted successfully');
+        $this->productSizeService->deleteSize($productSize);
+        return WebResponses::successRedirect('admin.sizes.index', 'Product Size Deleted successfully');
     }
 }

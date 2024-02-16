@@ -929,7 +929,7 @@ footer ul li a:hover {
 
 .price {
     border-bottom: 1px solid #000000;
-    padding-bottom: 2.25rem;
+    /*padding-bottom: 2.25rem;*/
     margin-bottom: 1.6875rem;
 }
 
@@ -1250,3 +1250,534 @@ html.lenis {
 
 
 /* / sraachbar end / */
+
+/* login css start */
+
+.loginSec {
+    padding: 8rem 0;
+}
+
+.loginSec .formBox {
+    background: #fff;
+    padding: 1.5rem;
+    box-shadow: 0 0 20px rgb(0 0 0 / 10%);
+}
+
+.loginSec h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1em;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.loginSec .form-control {
+    border-width: 1px;
+    border-color: rgb(237, 237, 237);
+    border-style: solid;
+    border-radius: 0px;
+    background-color: #ebebeb;
+    height: 51px;
+    width: 100%;
+    padding: 0 2em;
+    font-size: 0.875rem;
+}
+
+.loginSec .forgetPassword {
+    color: #000;
+    display: inline-block;
+    margin: 10px 10px;
+}
+
+.loginSec .themeBtn {
+    border: 0;
+    padding: 1em 2.25em;
+}
+
+.loginSec .forgetPassword.themeBtn {
+    color: #fff;
+}
+
+.loginSec .forgetPassword {
+    color: #000;
+    display: inline-block;
+    margin: 10px 10px;
+}
+
+.chkot-pag {
+    padding: 4rem 0px;
+}
+
+.card-row {
+    border-radius: 5px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    align-items: center;
+    margin-bottom: 35px;
+    box-shadow: -6px 4px 19px -3px #9e9c9c;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.card-row img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.fields-row .form-control {
+    height: 54px;
+    padding-left: 14px;
+}
+
+.check-out-form {
+    text-align: center;
+}
+
+.check-out-form .primary-heading {
+    margin-bottom: 40px;
+    font-size: 55px;
+    font-weight: bold;
+    color: #323232;
+}
+
+.check-out-form .primary-heading span {
+    color: #fd4242;
+}
+
+.check-out-form p {
+    line-height: 16px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    font-weight: 500;
+    color: #2d2e37;
+}
+
+.check-out-form .checkout-subheading a {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.check-out-form .form-control {
+    min-height: 60px;
+    margin-bottom: 20px;
+    box-shadow: 7px 6px 15px 0px #d2d2d2;
+    border: 1px solid #ebebeb;
+}
+
+.check-out-form form,
+.check-out-form .order-summery {
+    padding: 20px 0px;
+}
+
+.check-out-form form {
+    margin-top: 0;
+    text-align: left;
+}
+
+.check-out-section input[type="checkbox"] {
+    display: none;
+}
+
+.check-out-section input[type="checkbox"] + label {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 20px;
+    /* font: 14px/20px 'Open Sans', Arial, sans-serif; */
+    color: #ddd;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.check-out-section input[type="checkbox"] + label:last-child {
+    margin-bottom: 0;
+}
+
+.check-out-section input[type="checkbox"] + label:before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--primary-color);
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: .6;
+    -webkit-transition: all .12s, border-color .08s;
+    transition: all .12s, border-color .08s;
+}
+
+.check-out-section input[type="checkbox"]:checked + label:before {
+    width: 10px;
+    top: -5px;
+    left: 5px;
+    border-radius: 0;
+    opacity: 1;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.check-out-form form .checkbox label {
+    color: #323232;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.check-out-form form .checkbox {
+    margin-bottom: 20px;
+}
+
+.check-out-form form label {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.order-summery {
+    text-align: left;
+}
+
+.bb-1 {
+    border-bottom: 1px solid #f8f8f8;
+    padding: 10px 0px;
+    margin-bottom: 10px;
+}
+
+.order-summery input.form-control {
+    margin-bottom: 10px;
+    box-shadow: none;
+}
+
+.order-summery .d-btn {
+    padding: 14px 88px;
+}
+
+.order-summery .row span {
+    font-size: 18px;
+    font-weight: 500;
+    color: #2d2e37;
+}
+
+.check-out-form form label {
+    color: #2d2e37;
+    font-weight: 500;
+}
+
+
+/*===========================================CheckOut 1 css End=====================================*/
+
+
+/*===========================================CheckOut 2 css start=====================================*/
+
+.shipping-billing-col ul li:nth-child(2) {
+    flex: 0 0 85%;
+}
+
+.card-row .red {
+    color: #e22a29;
+}
+
+.card-row h4,
+.card-row h6 {
+    text-align: left;
+    /* font-family: 'Poppins', sans-serif; */
+    font-size: 18px;
+}
+
+.card-row .red {
+    font-size: 24px;
+    color: #000000;
+    margin: 0;
+}
+
+.shop-details .btn.btn-number {
+    padding: 0pc;
+    border: 1px solid #ced4da;
+    border-radius: 0px;
+    width: 33px;
+    height: 25px;
+    display: inline-block;
+    line-height: 15px;
+}
+
+.shop-details .btn.btn-number svg {
+    color: #989898;
+}
+
+.svg-inline--fa.fa-w-10 {
+    width: .625em;
+}
+
+span.input-group-btn {
+    display: inline-flex;
+    flex-direction: column;
+    position: relative;
+    top: -15px;
+    left: -4px;
+    color: #989898;
+}
+
+.check-out-form .shop-details .form-control {
+    min-height: 50px;
+    box-shadow: none;
+    margin-bottom: 0px;
+    color: black;
+    position: relative;
+    top: -2px;
+}
+
+.shop-details input {
+    background-color: transparent;
+    width: 50px;
+    height: 38px !important;
+    border-radius: 0px;
+    padding: 0px;
+    text-align: center;
+    color: #ffffff;
+    display: inline-block;
+}
+
+svg.svg-inline--fa.fa-trash-alt {
+    height: 30px;
+    fill: black;
+}
+
+svg.svg-inline--fa.fa-trash-alt path {
+    fill: black;
+}
+
+.shipping-billing-col ul {
+    list-style: none;
+    padding-left: 0px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #565656;
+    padding-bottom: 22px;
+    padding-top: 22px;
+    margin-bottom: 0px;
+}
+
+.mt-60 {
+    margin-top: 60px !important;
+}
+
+.shipping-billing-col {
+    text-align: left;
+}
+
+.mt-50 {
+    margin-top: 50px !important;
+}
+
+.shipping-billing-col ul li svg {
+    color: var(--primary-color);
+    font-size: 18px;
+    height: 1em;
+}
+
+.shipping-billing-col ul li p {
+    margin-bottom: 0px;
+    color: #5e5e5e;
+    font-size: 16px;
+    line-height: 26px;
+}
+
+.shipping-billing-col ul li a {
+    color: var(--primary-color);
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+
+/*===========================================CheckOut 2 css End=====================================*/
+
+
+/*===========================================CheckOut 3 css statr=====================================*/
+
+.check-out-form.check-out-3 .tabs-row {
+    box-shadow: 7px 6px 15px 0px #d2d2d2;
+    text-align: left;
+}
+
+.tabs-row {
+    padding: 40px 30px;
+    margin-top: 50px;
+}
+
+.check-out-form.check-out-3 .tabs-row .form-control {
+    box-shadow: none;
+}
+
+.fields-row .form-control {
+    height: 54px;
+    padding-left: 14px;
+}
+
+.check-out-form.check-out-3 input[type="checkbox"] + label:before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 40px;
+}
+
+.check-out-form.check-out-3 input[type="checkbox"]:checked + label:before {
+    width: 20px;
+}
+
+.check-out-form.check-out-3 input[type="checkbox"] + label {
+    padding-left: 55px;
+}
+
+.check-out-form.check-out-3 .checkbox {
+    margin-top: 15px;
+}
+
+.mt-25 {
+    margin-top: 25px !important;
+}
+
+.check-out-form.check-out-3 .checkbox h5 {
+    font-size: 18px;
+    margin-bottom: 0px;
+    text-transform: uppercase;
+    color: black
+}
+
+.check-out-form.check-out-3 .checkbox label {
+    color: black;
+    text-transform: lowercase;
+}
+
+.check-out-form label {
+    text-transform: uppercase;
+}
+
+.shipping-billing-col ul li p a {
+    color: #8f8f8f;
+    text-transform: capitalize;
+}
+
+.numberone {
+    margin: 0;
+    display: flex;
+}
+
+.numberone .minus {
+    /* float: left; */
+}
+
+.check-out-section .numberone .minus,
+.plus {
+    width: 40px;
+    height: 40px;
+    background: #ebebeb;
+    border-radius: 0;
+    padding: 0px 0px;
+    /* border: 1px solid #e1e1e1; */
+    display: flex;
+    vertical-align: middle;
+    text-align: center;
+    color: #7a7a7a;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.numberone span {
+    cursor: pointer;
+}
+
+.numberone input {
+    height: 45px;
+    border-radius: 0;
+    border: 0;
+    width: 45px;
+    text-align: center;
+    color: #808080;
+    outline: none;
+}
+
+.card-row .price {
+    font-size: 18px;
+    color: var(--primary-color);
+}
+
+.d-btn {
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    font-size: 20px;
+    color: #ffffff;
+    display: inline-block;
+    padding: 16px 88px;
+    text-transform: uppercase;
+    transition: all 0.5s ease;
+}
+
+.d-btn:hover {
+    background-color: var(--theme-color);
+    color: var(--black);
+}
+
+
+.cart-btn {
+    border-radius: 5px;
+    background-color: #00a7a8;
+    font-size: 16px;
+    width: 100%;
+    color: #ffffff;
+    display: inline-block;
+    padding: 16px 8px;
+    text-transform: uppercase;
+    transition: all 0.5s ease;
+}
+
+.cart-btn:hover {
+    background-color: #00a7a8;
+    color: var(--black);
+}
+
+.chkot-pag .primary-heading {
+    margin-bottom: 20px;
+}
+
+.chkot-pag .check-out-form form {
+    padding: 30px 0px;
+}
+
+.shoptab .nav-tabs {
+    justify-content: center;
+    border: 0;
+    margin-bottom: 2rem;
+    gap: 4rem;
+}
+
+.shoptab .nav-tabs .nav-link {
+    all: unset;
+    cursor: pointer;
+    font-size: 2rem;
+    color: var(--black);
+    font-weight: bold;
+    font-family: 'Freight Big Pro';
+    border-bottom: 3px solid transparent;
+}
+
+.shoptab .nav-tabs .nav-link.active {
+    border-bottom: 3px solid #000;
+}
+
+.cart-btn {
+    border-radius: 5px;
+    background-color: #00a7a8;
+    font-size: 16px;
+    width: 100%;
+    color: #ffffff;
+    display: inline-block;
+    padding: 16px 8px;
+    text-transform: uppercase;
+    transition: all 0.5s ease;
+}

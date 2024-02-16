@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
     <!-- Bootstrap CSS -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/all.min.css') }}"/>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
@@ -20,14 +21,3 @@
 </head>
 
 <body>
-
-<div class="preLoader black">
-    @if(!empty($settings->header_logo))
-        <img src="{{ asset('setting_images/' . $settings->header_logo) ?? '' }}" class="img-fluid"
-             alt="img">
-    @else
-        <img src="{{ $settings->settingImage('header_logo') ?? ''  }}" class="img-fluid" alt="">
-
-    @endif
-</div>
-<div class="preLoader white"></div>
