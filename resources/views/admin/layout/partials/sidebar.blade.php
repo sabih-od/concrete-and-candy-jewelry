@@ -59,17 +59,18 @@
                     </ul>
                 </li>
 
-                {{--                <li class=" {{(request()->is('admin/size*')) ? '' : 'select-menu' }}">--}}
-                {{--                    <a href="javascript:void(0);" class="waves-effect selectBtn select-btn"><i class="fas fa-ruler"></i><span>  Product Sizes--}}
-                {{--                            <span class="float-right menu-arrow select-btn"><i class="mdi mdi-chevron-right"></i></span></span></a>--}}
-                {{--                    <ul class="submenu">--}}
-                {{--                        <li class="{{ (request()->is('admin/sizes')) ? 'active-nav' : '' }}"><a--}}
-                {{--                                href="{{ route('admin.sizes.index') }}">All Sizes</a></li>--}}
-                {{--                        <li class="{{ (request()->is('admin/size/create')) ? 'active-nav' : '' }}"><a--}}
-                {{--                                href="{{ route('admin.size.create') }}"> Add Size</a>--}}
-                {{--                        </li>--}}
-                {{--                    </ul>--}}
-                {{--                </li>--}}
+                <li class=" {{(request()->is('admin/size*')) ? '' : 'select-menu' }}">
+                    <a href="javascript:void(0);" class="waves-effect selectBtn select-btn"><i class="fas fa-ruler"></i><span>  Product Sizes
+                                            <span class="float-right menu-arrow select-btn"><i
+                                                    class="mdi mdi-chevron-right"></i></span></span></a>
+                    <ul class="submenu">
+                        <li class="{{ (request()->is('admin/sizes')) ? 'active-nav' : '' }}"><a
+                                href="{{ route('admin.sizes.index') }}">All Sizes</a></li>
+                        <li class="{{ (request()->is('admin/size/create')) ? 'active-nav' : '' }}"><a
+                                href="{{ route('admin.size.create') }}"> Add Size</a>
+                        </li>
+                    </ul>
+                </li>
 
 
                 <li class=" {{(request()->is('admin/product*')) ? '' : 'select-menu' }}">

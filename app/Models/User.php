@@ -7,11 +7,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, InteractsWithMedia;
 
 
     /**
@@ -23,6 +25,14 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'address',
+        'zip',
+        'city',
+        'state_id',
+        'country',
+        'phone',
+        'status',
+        'gender'
     ];
 
     /**
@@ -43,4 +53,27 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function userImage()
+    {
+        return $this->getMedia('images')->first() ?
+            $this->getMedia('images')->first()->getUrl() : asset('images/no-profile-img.jpg');
+    }
+
+
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class, 'notify_id');
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    public function unReadNotifications()
+    {
+        return $this->notifications()->where('is_read', 0);
+    }
+
 }

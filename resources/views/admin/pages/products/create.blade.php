@@ -56,49 +56,14 @@
                                         <select name="category_id" id="parent_id" class="form-control">
                                             <option value="0" disabled>Select Category</option>
                                             @forelse ($categories as $category)
-                                                @if ($category->parent_id == 0)
-                                                    <option style="font-weight: bold;"
-                                                            value="{{ $category->id }}">{{ $category->name }}</option>
-                                                    @if ($category->subcategories->count() > 0)
-                                                        @include('admin.components.category-dropdown', [
-                                                            'subcategories' => $category->subcategories,
-                                                            'level' => 1, // Start with level 1 for the top-level categories
-                                                            'create_new_category' => 1
-                                                        ])
-                                                    @endif
-                                                @endif
+                                                <option style="font-weight: bold;"
+                                                        value="{{ $category->id }}">{{ $category->name }}</option>
 
                                             @empty
                                                 <option value="">No category available</option>
                                             @endforelse
                                         </select>
                                         @error('category_id')
-                                        <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-
-                                    <div class="">
-                                        <ul class="list">
-                                            <li>
-                                                <input class="checkclick1" name="product_brand_check"
-                                                       type="checkbox" id="product_condition_check" value="1">
-                                                <label
-                                                    for="product_condition_check">{{ __('Product Brand') }}</label>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="form-group show-box">
-                                        <div class="col-lg-12">
-                                            <div class="left-area">
-                                                <p class="m-0">{{ __('Product Brand') }}</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <input type="text" class="form-control"
-                                                   name="brand">
-                                        </div>
-                                        @error('brand')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -203,44 +168,36 @@
                                         </div>
                                     </div>
 
-
                                     <div class="">
                                         <ul class="list">
                                             <li>
-                                                <input name="featured"
+                                                <input class="checkclick1" name="product_feature_check"
                                                        type="checkbox" id="product_condition_check" value="1">
                                                 <label
-                                                    for="product_condition_check">{{ __('Featured') }}</label>
+                                                    for="product_condition_check">{{ __('Manage Features') }}</label>
                                             </li>
                                         </ul>
                                     </div>
 
+                                    <div class="form-group show-box">
 
-{{--                                    <div class="">--}}
-{{--                                        <ul class="list">--}}
-{{--                                            <li>--}}
-{{--                                                <input class="checkclick1" name="product_return"--}}
-{{--                                                       type="checkbox" id="product_return" value="1">--}}
-{{--                                                <label--}}
-{{--                                                    for="product_return_policy">{{ __('Return Policy') }}</label>--}}
-{{--                                                <span class="note">( If the checkbox is left unchecked,--}}
-{{--                                                    it will not be eligible for return )</span>--}}
-{{--                                            </li>--}}
-{{--                                        </ul>--}}
-{{--                                    </div>--}}
+                                        <div class="col-lg-12">
+                                            <div class="featuresBtn">
+                                                <label>
+                                                    <input type="checkbox" name="feature[]" value="waterproof">
+                                                    <span>Waterproof</span>
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" name="feature[]" value="hypoallergenic">
+                                                    <span>Hypoallergenic</span>
+                                                </label>
+                                            </div>
+                                        </div>
 
-{{--                                    <div class="form-group show-box">--}}
-{{--                                        <div class="col-lg-12">--}}
-{{--                                            <textarea name="product_return_policy" class="form-control"--}}
-{{--                                                      rows="5"--}}
-{{--                                                      value=""--}}
-{{--                                                      placeholder="Return policy..">{{ old('product_return_policy') }}</textarea>--}}
-
-{{--                                        </div>--}}
-{{--                                        @error('product_return_policy')--}}
-{{--                                        <span class="text-danger">{{ $message }}</span>--}}
-{{--                                        @enderror--}}
-{{--                                    </div>--}}
+                                        @error('feature')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
 
 
                                     <div class="form-group">

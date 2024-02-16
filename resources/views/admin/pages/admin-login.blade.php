@@ -5,7 +5,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <title>Free-99 - Admin Panel</title>
+    <title>Candy-jewelry - Admin Panel</title>
     <meta content="Responsive admin theme build on top of Bootstrap 4" name="description"/>
     <meta content="Themesdesign" name="author"/>
     {{--    <link rel="shortcut icon" href="{{ asset('images/logo.png') }}">--}}
@@ -38,15 +38,19 @@
                 <div class="card card-pages shadow-none mt-4">
                     <div class="card-body">
                         <div class="text-center mt-0 mb-3">
-                            <a href="index.html" class="logo logo-admin">
+                            <a href="" class="logo logo-admin">
                                 @if(!empty($settings->header_logo))
-                                    <img src="{{ asset('setting_images/' . $settings->header_logo) ?? '' }}" class="img-fluid"
+                                    <img src="{{ asset('setting_images/' . $settings->header_logo) ?? '' }}"
+                                         class="img-fluid"
                                          alt="img">
                                 @else
-                                    <img src="{{ $settings->settingImage('header_logo') ?? ''  }}" class="img-fluid" alt="">
+                                    <img src="{{ $settings->settingImage('header_logo') ?? ''  }}" class="img-fluid"
+                                         alt="">
 
                                 @endif
-                            <p class="text-muted w-75 mx-auto mb-4 mt-4">Enter your email address and password to access
+                            </a>
+                            <p class="text-muted w-75 mx-auto mb-4 mt-4">Enter your email address and password to
+                                access
                                 admin panel. </p>
                         </div>
 

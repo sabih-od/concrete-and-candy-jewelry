@@ -104,17 +104,12 @@ class UserService
     public function updateUser($user, $userData)
     {
         if ($user) {
-            if (isset($userData['shop_name'])) {
-                $user->update($userData);
-                $this->updateVendorShop($user, $userData);
-            }
 
             if (isset($userData['current_password']) && $userData['current_password'] != null) {
                 $this->updatePassword($user, $userData);
             } else {
                 $user->update($userData);
             }
-
 
             if (isset($userData['image']) && $userData['image']->isValid()) {
                 $this->checkUserImage($user, $userData['image']);

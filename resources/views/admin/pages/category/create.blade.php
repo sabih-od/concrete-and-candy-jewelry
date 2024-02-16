@@ -59,32 +59,6 @@
                                     <div class="row">
 
                                         <div class="col-md-8">
-
-                                            <div class="form-group col-md-12">
-                                                <label for="parent_id">Parent Category</label>
-                                                <select name="parent_id" id="parent_id" class="form-control">
-                                                    <option value="0">No Parent</option>
-                                                    @foreach ($categories as $category)
-                                                        @if ($category->parent_id == 0)
-                                                            <option style="font-weight: bold;"
-                                                                    value="{{ $category->id }}">{{ $category->name }}</option>
-                                                            @if ($category->subcategories->count() > 0)
-                                                                @include('admin.components.category-dropdown', [
-                                                                    'subcategories' => $category->subcategories,
-                                                                    'level' => 1, // Start with level 1 for the top-level categories,
-                                                                    'create_new_category' => 1
-                                                                ])
-                                                            @endif
-                                                        @endif
-                                                    @endforeach
-                                                </select>
-
-                                                @error('parent_id')
-                                                <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-
-
                                             <div class="form-group col-md-12">
                                                 <label for="name">Category Name</label>
                                                 <input type="text" name="name" id="name" class="form-control"

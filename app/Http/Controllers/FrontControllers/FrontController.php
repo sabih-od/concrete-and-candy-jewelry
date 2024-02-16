@@ -4,7 +4,11 @@ namespace App\Http\Controllers\FrontControllers;
 
 use App\Helpers\WebResponses;
 use App\Http\Controllers\Controller;
+use App\Models\Product;
+use App\Models\ProductVariation;
+use App\Services\Admin\CategoryService;
 use App\Services\Admin\CMSPagesService;
+use App\Services\Product\ProductService;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
@@ -14,14 +18,25 @@ class FrontController extends Controller
      * @var CMSPagesService
      */
     public $cmsPagesService;
+    /**
+     * @var ProductService
+     */
 
-    public function __construct(CMSPagesService $cmsPagesService)
+    public $productService;
+    /**
+     * @var CategoryService
+     */
+    public $categoryService;
+
+    public function __construct(CMSPagesService $cmsPagesService, ProductService $productService, CategoryService $categoryService)
     {
         $this->cmsPagesService = $cmsPagesService;
+        $this->productService = $productService;
+        $this->categoryService = $categoryService;
 
     }
 
-    function index()
+    public function index()
     {
         try {
             $data['homeData'] = $this->cmsPagesService->getPageBySlug('home');
@@ -32,7 +47,7 @@ class FrontController extends Controller
         }
     }
 
-    function about()
+    public function about()
     {
         try {
             $data['homeData'] = $this->cmsPagesService->getPageBySlug('about');
@@ -43,7 +58,7 @@ class FrontController extends Controller
         }
     }
 
-    function contact()
+    public function contact()
     {
         try {
             $data['homeData'] = $this->cmsPagesService->getPageBySlug('contact');
@@ -54,7 +69,7 @@ class FrontController extends Controller
         }
     }
 
-    function categories()
+    public function categories()
     {
         try {
             return view('front.pages.earrings');
@@ -63,7 +78,7 @@ class FrontController extends Controller
         }
     }
 
-    function faq()
+    public function faq()
     {
         try {
             $data['homeData'] = $this->cmsPagesService->getPageBySlug('faq');
@@ -74,7 +89,7 @@ class FrontController extends Controller
         }
     }
 
-    function privacyPolicy()
+    public function privacyPolicy()
     {
         try {
             return view('front.pages.privacy-policy');
@@ -83,7 +98,7 @@ class FrontController extends Controller
         }
     }
 
-    function termsAndCondition()
+    public function termsAndCondition()
     {
         try {
             return view('front.pages.terms-and-conditions');
@@ -93,7 +108,7 @@ class FrontController extends Controller
     }
 
 
-    function returnPolicy()
+    public function returnPolicy()
     {
         try {
             return view('front.pages.refund-policy');
@@ -102,14 +117,38 @@ class FrontController extends Controller
         }
     }
 
-    function shop()
+    public function shop($categorySlug = null)
     {
         try {
             $data['homeData'] = $this->cmsPagesService->getPageBySlug('shop');
+            $data['category'] = $this->categoryService->getCategoryBySlug($categorySlug);
 
-            return view('front.pages.shop', compact('data'));
+            $data['products'] = $this->productService->getProductsWithPagination($categorySlug);
+            return view('front.pages.shop', $data);
         } catch (\Exception $e) {
             return WebResponses::errorRedirectBack($e->getMessage());
         }
     }
+
+    public function shopProductDetail($slug)
+    {
+        $data['homeData'] = $this->cmsPagesService->getPageBySlug('shop');
+
+        $data['product'] = Product::where('slug', $slug)->first();
+
+        return view('front.pages.product-detail', $data);
+    }
+
+    public function getSizeColors(Request $request)
+    {
+
+        $colors = ProductVariation::where('product_id', $request->product_id)->where('size_id', $request->variation_size)->get();
+
+        return response()->json([
+            "data" => $colors,
+            'status' => 200,
+        ]);
+
+    }
+
 }

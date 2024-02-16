@@ -2,6 +2,18 @@
 
 namespace App\Providers;
 
+use App\Events\GenerateNotification;
+use App\Listeners\StoreNotificationListener;
+use App\Models\Category;
+use App\Models\Order;
+use App\Models\OrderDetail;
+use App\Models\Product;
+use App\Models\User;
+use App\Observers\CategoryObserver;
+use App\Observers\OrderDetailObserver;
+use App\Observers\OrderObserver;
+use App\Observers\ProductObserver;
+use App\Observers\UserObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -18,6 +30,9 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        GenerateNotification::class => [
+            StoreNotificationListener::class,
+        ],
     ];
 
     /**
@@ -27,6 +42,10 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Product::observe(ProductObserver::class);
+        Category::observe(CategoryObserver::class);
+        Order::observe(OrderObserver::class);
+        OrderDetail::observe(OrderDetailObserver::class);
+        User::observe(UserObserver::class);
     }
 }
