@@ -76,4 +76,9 @@ class User extends Authenticatable implements HasMedia
         return $this->notifications()->where('is_read', 0);
     }
 
+    public function wishlists()
+    {
+        return $this->hasMany('App\Models\Wishlist');
+    }
+
 }

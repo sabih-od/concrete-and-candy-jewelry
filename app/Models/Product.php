@@ -87,4 +87,15 @@ class Product extends Model implements HasMedia
     {
         return $this->hasOne(ProductReturnPolicy::class);
     }
+
+    public function orderDetails()
+    {
+        return $this->HasMany(OrderDetail::class);
+    }
+
+    public function wishlist()
+    {
+        return $this->belongsTo('App\Models\Wishlist', 'id', 'product_id');
+    }
+
 }

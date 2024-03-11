@@ -84,7 +84,7 @@ class CartService
             Cart::add([
                 'name' => $product->name,
                 'id' => $uniqueId,
-                'qty' => $request['quantity'],
+                'qty' => isset($request['quantity']) ? $request['quantity'] : 1,
                 'price' => $request['product_price'] ?? $product->price,
                 'options' => [
                     'color' => isset($request['variation_color']) ? $request['variation_color'] : null,

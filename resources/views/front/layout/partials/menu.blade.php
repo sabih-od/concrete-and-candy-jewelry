@@ -54,7 +54,9 @@
                     <a href="#search"><i class="fal fa-search"></i></a>
                     <a href="{{ auth()->check() ? route('user.dashboard') : route('login.form') }}"><i
                             class="fal fa-user"></i></a>
-                    <a href="#"><i class="fal fa-heart"></i></a>
+                    @if(auth()->check())
+                        <a href="{{ route('user-wishlists') }}"><i class="fal fa-heart"></i></a>
+                    @endif
                     <a href="{{ route('front.cart') }}" class="cart"><i
                             class="fal fa-shopping-cart"></i><span><b>${{Cart::subtotal()}}</b></span></a>
                 </div>

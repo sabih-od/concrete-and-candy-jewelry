@@ -126,10 +126,11 @@
 
 <div id="search">
     <button class="close" type="button">×</button>
-    <form>
-        <input placeholder="SEARCH" type="search" value="">
+    <form action="{{ route('front.search') }}" method="POST">
+        @csrf
+        <input placeholder="SEARCH" name="search" type="search" value="">
         <div class="srch-btn">
-            <a href="#" class="themeBtn">Search</a>
+            <button href="#" class="themeBtn" type="submit">Search</button>
         </div>
     </form>
 </div>
