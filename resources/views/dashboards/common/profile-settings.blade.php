@@ -157,8 +157,9 @@
                                 <div class="col-md-2">
                                     <label>State**</label>
                                 </div>
+                                <input type="hidden" id="state_id" value="{{ $user->state_id }}">
                                 <div class="col-md-10">
-                                    <select name="state_id" id="state" value="{{ $user->state ?? '' }}"
+                                    <select name="state_id" id="state" value="{{ $user->state_id ?? '' }}"
                                             class="form-control">
                                         {{--                                                                                <option value="">Select a state</option>--}}
                                         {{--                                                                                @if ($user->country_id)--}}
@@ -273,28 +274,35 @@
     <script src="{{ asset('js/user.js') }}"></script>
 
 @endsection
+
 @push('script')
+
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
-        $(document).ready(function () {
-            $('#country').on('change', function () {
-                var countryId = $(this).val();
 
+        $(document).ready(function () {
+            function populateStates(countryId, selectedStateId) {
                 $.ajax({
                     url: '{{asset('/get-states/')}}/' + countryId,
                     type: 'GET',
                     success: function (data) {
                         var stateSelect = $('#state');
-
                         stateSelect.empty().append('<option value="">Select a state</option>');
-
                         $.each(data, function (key, value) {
-                            stateSelect.append('<option value="' + value.id + '">' + value.name + '</option>');
+                            stateSelect.append('<option value="' + value.id + '"' + (selectedStateId == value.id ? 'selected' : '') + '>' + value.name + '</option>');
                         });
-
-
                     }
                 });
+            }
+
+            var countryId = $('#country').val();
+            var stateId = $('#state_id').val();
+            populateStates(countryId, stateId);
+
+            $('#country').on('change', function () {
+                var countryId = $(this).val();
+                populateStates(countryId);
             });
         });
+
     </script>
