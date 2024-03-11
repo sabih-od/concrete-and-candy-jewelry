@@ -75,6 +75,37 @@ class ProductService
         }
     }
 
+    public function getMostPurchasedProducts($limit = null)
+    {
+        $mostPurchasedProducts = Product::withCount('orderDetails')
+            ->orderByDesc('order_details_count');
+
+        if ($limit !== null) {
+            $mostPurchasedProducts->limit($limit);
+        }
+        return $mostPurchasedProducts->get();
+
+
+    }
+
+    public function getProducts($limit = null, $random = false, $latest = false)
+    {
+        $query = $this->productModel->query();
+
+        if ($limit !== null) {
+            $query->limit($limit);
+        }
+        if ($random) {
+            $query->inRandomOrder();
+        }
+        if ($latest) {
+            $query->latest();
+        }
+
+        return $query->with('Category')->get();
+    }
+
+
     public function getProductsWithPagination($categorySlug = null, $searchParam = null)
     {
         if ($categorySlug != null) {

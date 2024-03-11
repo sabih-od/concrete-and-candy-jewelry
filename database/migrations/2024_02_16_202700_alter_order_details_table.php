@@ -17,9 +17,13 @@ class AlterOrderDetailsTable extends Migration
             $table->timestamp('return_date')->nullable();
             $table->longText('return_reason')->nullable();
             $table->integer('return_qty')->nullable();
-            $table->dropColumn('size');
             $table->integer('size_id')->nullable();
             $table->string('invoice_number')->nullable();
+
+            if (Schema::hasColumn('order_details', 'size')) {
+                $table->dropColumn('size');
+            }
+
         });
     }
 
@@ -31,7 +35,7 @@ class AlterOrderDetailsTable extends Migration
     public function down()
     {
         Schema::table('order_details', function (Blueprint $table) {
-            $table->dropColumn('return_reason', 'return_date', 'return_qty', 'invoice_number', 'size_id');
+            $table->dropColumn(['return_reason', 'return_date', 'return_qty', 'invoice_number', 'size_id']);
         });
     }
 }

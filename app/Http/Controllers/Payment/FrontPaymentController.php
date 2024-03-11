@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Payment;
 use App\Events\GenerateNotification;
 use App\Helpers\WebResponses;
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use App\Services\Cart\CartService;
 use App\Services\Order\OrderService;
 use App\Services\Payment\Gateways\StripeCheckoutService;
@@ -103,6 +104,15 @@ class FrontPaymentController extends Controller
             return WebResponses::errorRedirectSpecificRoute('front.orderError', $e->getMessage());
         }
 
+    }
+
+    public function search(Request $request)
+    {
+        $product = Product::where('name', 'like', '%' . $request->search . '%')->first();
+        if ($product) {
+            return redirect()->route('front.shop.product', ['slug' => $product->slug]);
+        }
+        return WebResponses::successRedirectBack('Sorry! this name product not found');
     }
 
 

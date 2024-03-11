@@ -27,13 +27,21 @@ class CategoryService
         return self::$instance;
     }
 
-    public function getAllCategoriesWithLimit($limit = null)
+    public function getAllCategoriesWithLimit($limit = null, $random = false, $latest = false)
     {
-        if ($limit != null) {
-            return $this->categoryModel->limit($limit)->get();
-        }
-        return $this->categoryModel->get();
+        $query = Category::query();
 
+        if ($limit !== null) {
+            $query->limit($limit);
+        }
+        if ($random) {
+            $query->inRandomOrder();
+        }
+        if ($latest) {
+            $query->latest();
+        }
+
+        return $query->get();
     }
 
     public function getAllCategories($slug = null)

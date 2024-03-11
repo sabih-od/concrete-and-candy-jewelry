@@ -27,6 +27,7 @@ use App\Http\Controllers\Auth\ResetPasswordController as UserResetPasswordContro
 
 use App\Http\Controllers\DashboardBaseController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
+use App\Http\Controllers\User\WishlistController;
 
 use App\Http\Controllers\Payment\PaymentController;
 
@@ -62,7 +63,6 @@ Route::post('/product/size/colors', [FrontController::class, 'getSizeColors'])->
 
 //Front Cart Routes
 Route::get('/cart', [CartController::class, 'index'])->name('front.cart');
-
 Route::post('/cart/{product}', [CartController::class, 'store'])->name('front.cart.add');
 Route::put('/cart/{id}', [CartController::class, 'update'])->name('front.cart.update');
 Route::get('/cart/remove/{id}', [CartController::class, 'destroy'])->name('front.cart.remove');
@@ -75,6 +75,8 @@ Route::get('/success', [CheckoutController::class, 'success'])->name('front.succ
 
 //Stripe Payment With Checkout
 Route::post('/checkout', [FrontPaymentController::class, 'stripeCheckout'])->name('front.stripe.payment');
+
+Route::post('/search', [FrontPaymentController::class, 'search'])->name('front.search');
 
 //Auth Routes
 Route::middleware(['guest'])->group(function () {
@@ -178,6 +180,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/stripe-cancel/{type?}', [PaymentController::class, 'stripeCancel'])->name('stripe.cancel');
     });
 
+    // User Wishlist
+    Route::get('/wishlists', [WishlistController::class, 'wishlists'])->name('user-wishlists');
+    Route::get('/wishlist/add/{id}', [WishlistController::class, 'addwish'])->name('add-to-wishlist');
+    Route::get('/wishlist/remove/{id}', [WishlistController::class, 'removewish'])->name('user-wishlist-remove');
 
     //  Orders route for admin, users and vendor product orders
     Route::get('/orders/{page?}/{tab?}', [OrderController::class, 'index'])->name('my.orders.index');

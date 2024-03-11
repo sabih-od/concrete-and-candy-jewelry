@@ -40,8 +40,14 @@ class FrontController extends Controller
     {
         try {
             $data['homeData'] = $this->cmsPagesService->getPageBySlug('home');
+            $data['categories'] = $this->categoryService->getAllCategoriesWithLimit(4, true, false);
+            $data['fresh_design'] = $this->productService->getProducts(5, true);
+            $data['new_arrivals'] = $this->productService->getProducts(6, false, true);
+            $data['category_collection'] = $this->categoryService->getAllCategoriesWithLimit(4, false, true);
+            $data['most_love'] = $this->productService->getMostPurchasedProducts(6);
 
-            return view('front.pages.index', compact('data'));
+            return view('front.pages.index', $data);
+
         } catch (\Exception $e) {
             return WebResponses::errorRedirectBack($e->getMessage());
         }
